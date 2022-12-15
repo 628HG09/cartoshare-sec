@@ -11,7 +11,15 @@ public class UserDto {
     public String password;
     public Boolean enabled;
     public String apikey;
+    public String firstname;
+    public String lastname;
+    public int phoneNumber;
     public String email;
+
+
+
+    private DriverProfileDto driverProfileDto;
+
     @JsonSerialize
     public Set<Authority> authorities;
 
@@ -29,6 +37,30 @@ public class UserDto {
 
     public String getApikey() {
         return apikey;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -61,5 +93,13 @@ public class UserDto {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public DriverProfileDto getDriverProfileDto() {
+        return driverProfileDto;
+    }
+
+    public void setDriverProfileDto(DriverProfileDto driverProfileDto) {
+        this.driverProfileDto = driverProfileDto;
     }
 }

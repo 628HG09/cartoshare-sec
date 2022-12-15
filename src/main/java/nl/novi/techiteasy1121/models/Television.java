@@ -75,12 +75,10 @@ public class Television {
         this.sold = sold;
     }
 
-    @OneToOne
-    RemoteController remoteController;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ci_module_id")
-    private CIModule ciModule;
+    private DriverProfile driverProfile;
 
     @OneToMany(mappedBy = "television")
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -156,12 +154,8 @@ public class Television {
         return sold;
     }
 
-    public RemoteController getRemoteController() {
-        return remoteController;
-    }
-
-    public CIModule getCiModule() {
-        return ciModule;
+    public DriverProfile getCiModule() {
+        return driverProfile;
     }
 
     public Collection<TelevisionWallBracket> getTelevisionWallBrackets() {
@@ -237,12 +231,8 @@ public class Television {
         this.sold = sold;
     }
 
-    public void setRemoteController(RemoteController remoteController) {
-        this.remoteController = remoteController;
-    }
-
-    public void setCiModule(CIModule ciModule) {
-        this.ciModule = ciModule;
+    public void setCiModule(DriverProfile driverProfile) {
+        this.driverProfile = driverProfile;
     }
 
     public void setTelevisionWallBrackets(Collection<TelevisionWallBracket> televisionWallBrackets) {

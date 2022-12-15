@@ -2,14 +2,11 @@ package nl.novi.techiteasy1121.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class CIModule {
+public class DriverProfile {
 
     @Id
     @GeneratedValue
@@ -18,9 +15,12 @@ public class CIModule {
     private String type;
     private Double price;
 
-    @OneToMany(mappedBy = "ciModule")
+    @OneToMany(mappedBy = "driverProfile")
     @JsonIgnore
-    List<Television> televisions;
+    List<User> users;
+
+    @OneToOne
+    Car car;
 
     public Long getId() {
         return id;
@@ -52,5 +52,13 @@ public class CIModule {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

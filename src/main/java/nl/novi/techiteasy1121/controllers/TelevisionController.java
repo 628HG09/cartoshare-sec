@@ -82,10 +82,10 @@ public class TelevisionController {
         return ResponseEntity.ok().body(dto);
     }
 
-    @PutMapping("/televisions/{id}/remotecontroller")
-    public void assignRemoteControllerToTelevision(@PathVariable("id") Long id, @RequestBody IdInputDto input) {
-        televisionService.assignRemoteControllerToTelevision(id, input.id);
-    }
+//    @PutMapping("/televisions/{id}/remotecontroller")
+//    public void assignRemoteControllerToTelevision(@PathVariable("id") Long id, @RequestBody IdInputDto input) {
+//        televisionService.assignRemoteControllerToTelevision(id, input.id);
+//    }
 
     @PutMapping("/televisions/{id}/{ciModuleId}")
     public void assignCIModuleToTelevision(@PathVariable("id") Long id, @PathVariable("ciModuleId") Long ciModuleId) {

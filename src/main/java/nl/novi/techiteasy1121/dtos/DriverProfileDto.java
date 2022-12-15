@@ -1,17 +1,20 @@
 package nl.novi.techiteasy1121.dtos;
 // validators mogen jullie eventueel zelf toevoegen
 
-public class CIModuleDto {
+public class DriverProfileDto {
 
     public Long id;
     public String name;
     public String type;
     public Double price;
 
-    public CIModuleDto() {
+    private CarDto carDto;
+
+    public DriverProfileDto() {
     }
 
-    public CIModuleDto(Long id, String name, String type, Double price) {
+    // MOET HIER NOG CAR BIJ?:
+    public DriverProfileDto(Long id, String name, String type, Double price) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -48,5 +51,13 @@ public class CIModuleDto {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public CarDto getCarDto() {
+        return carDto;
+    }
+
+    public void setCarDto(CarDto carDto) {
+        this.carDto = carDto;
     }
 }

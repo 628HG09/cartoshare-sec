@@ -19,8 +19,8 @@ public class TelevisionDto {
     private Integer originalStock;
     private Integer sold;
 
-    private CIModuleDto ciModuleDto;
-    private RemoteControllerDto remoteControllerDto;
+//    private DriverProfileDto driverProfileDto;
+
 
     public TelevisionDto() {
     }
@@ -113,14 +113,6 @@ public class TelevisionDto {
         return sold;
     }
 
-    public CIModuleDto getCiModuleDto() {
-        return ciModuleDto;
-    }
-
-    public RemoteControllerDto getRemoteControllerDto() {
-        return remoteControllerDto;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -189,11 +181,4 @@ public class TelevisionDto {
         this.sold = sold;
     }
 
-    public void setCiModuleDto(CIModuleDto ciModuleDto) {
-        this.ciModuleDto = ciModuleDto;
-    }
-
-    public void setRemoteControllerDto(RemoteControllerDto remoteControllerDto) {
-        this.remoteControllerDto = remoteControllerDto;
-    }
 }

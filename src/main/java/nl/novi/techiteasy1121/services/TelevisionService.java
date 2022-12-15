@@ -4,11 +4,10 @@ import nl.novi.techiteasy1121.dtos.TelevisionDto;
 import nl.novi.techiteasy1121.dtos.TelevisionInputDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.Television;
-import nl.novi.techiteasy1121.repositories.CIModuleRepository;
-import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
+import nl.novi.techiteasy1121.repositories.DriverProfileRepository;
+import nl.novi.techiteasy1121.repositories.CarRepository;
 import nl.novi.techiteasy1121.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,25 +17,25 @@ public class TelevisionService {
 
     private final TelevisionRepository televisionRepository;
 
-    private final RemoteControllerRepository remoteControllerRepository;
+    private final CarRepository carRepository;
 
-    private final RemoteControllerService remoteControllerService;
+    private final CarService carService;
 
-    private final CIModuleRepository ciModuleRepository;
+    private final DriverProfileRepository driverProfileRepository;
 
-    private final CIModuleService ciModuleService;
+    private final DriverProfileService driverProfileService;
 
     public TelevisionService(TelevisionRepository televisionRepository,
-                             RemoteControllerRepository remoteControllerRepository,
-                             RemoteControllerService remoteControllerService,
-                             CIModuleRepository ciModuleRepository,
-                             CIModuleService ciModuleService
+                             CarRepository carRepository,
+                             CarService carService,
+                             DriverProfileRepository driverProfileRepository,
+                             DriverProfileService driverProfileService
                              ){
         this.televisionRepository = televisionRepository;
-        this.remoteControllerRepository = remoteControllerRepository;
-        this.remoteControllerService = remoteControllerService;
-        this.ciModuleRepository = ciModuleRepository;
-        this.ciModuleService = ciModuleService;
+        this.carRepository = carRepository;
+        this.carService = carService;
+        this.driverProfileRepository = driverProfileRepository;
+        this.driverProfileService = driverProfileService;
     }
 
     public List<TelevisionDto> getAllTelevisions() {
@@ -54,12 +53,12 @@ public class TelevisionService {
 
         for(Television tv : televisions) {
             TelevisionDto dto = transferToDto(tv);
-            if(tv.getCiModule() != null){
-                dto.setCiModuleDto(ciModuleService.transferToDto(tv.getCiModule()));
-            }
-            if(tv.getRemoteController() != null){
-                dto.setRemoteControllerDto(remoteControllerService.transferToDto(tv.getRemoteController()));
-            }
+//            if(tv.getCiModule() != null){
+//                dto.setCiModuleDto(driverProfileService.transferToDto(tv.getCiModule()));
+//            }
+//            if(tv.getRemoteController() != null){
+//                dto.setRemoteControllerDto(carService.transferToDto(tv.getRemoteController()));
+//            }
             tvDtoList.add(dto);
         }
         return tvDtoList;
@@ -70,12 +69,12 @@ public class TelevisionService {
         if (televisionRepository.findById(id).isPresent()){
             Television tv = televisionRepository.findById(id).get();
             TelevisionDto dto =transferToDto(tv);
-            if(tv.getCiModule() != null){
-                dto.setCiModuleDto(ciModuleService.transferToDto(tv.getCiModule()));
-            }
-            if(tv.getRemoteController() != null){
-                dto.setRemoteControllerDto(remoteControllerService.transferToDto(tv.getRemoteController()));
-            }
+//            if(tv.getCiModule() != null){
+//                dto.setCiModuleDto(driverProfileService.transferToDto(tv.getCiModule()));
+//            }
+//            if(tv.getRemoteController() != null){
+//                dto.setRemoteControllerDto(carService.transferToDto(tv.getRemoteController()));
+//            }
 
             return transferToDto(tv);
         } else {
@@ -165,24 +164,24 @@ public class TelevisionService {
         return dto;
     }
 
-    public void assignRemoteControllerToTelevision(Long id, Long remoteControllerId) {
-        var optionalTelevision = televisionRepository.findById(id);
-        var optionalRemoteController = remoteControllerRepository.findById(remoteControllerId);
-
-        if(optionalTelevision.isPresent() && optionalRemoteController.isPresent()) {
-            var television = optionalTelevision.get();
-            var remoteController = optionalRemoteController.get();
-
-            television.setRemoteController(remoteController);
-            televisionRepository.save(television);
-        } else {
-            throw new RecordNotFoundException();
-        }
-    }
+//    public void assignRemoteControllerToTelevision(Long id, Long remoteControllerId) {
+//        var optionalTelevision = televisionRepository.findById(id);
+//        var optionalRemoteController = carRepository.findById(remoteControllerId);
+//
+//        if(optionalTelevision.isPresent() && optionalRemoteController.isPresent()) {
+//            var television = optionalTelevision.get();
+//            var remoteController = optionalRemoteController.get();
+//
+//            television.setRemoteController(remoteController);
+//            televisionRepository.save(television);
+//        } else {
+//            throw new RecordNotFoundException();
+//        }
+//    }
 
     public void assignCIModuleToTelevision(Long id, Long ciModuleId) {
         var optionalTelevision = televisionRepository.findById(id);
-        var optionalCIModule = ciModuleRepository.findById(ciModuleId);
+        var optionalCIModule = driverProfileRepository.findById(ciModuleId);
 
         if(optionalTelevision.isPresent() && optionalCIModule.isPresent()) {
             var television = optionalTelevision.get();

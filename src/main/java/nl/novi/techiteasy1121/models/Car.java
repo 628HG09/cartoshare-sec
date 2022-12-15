@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class RemoteController {
+public class Car {
 
     @Id
     @GeneratedValue
@@ -19,14 +19,14 @@ public class RemoteController {
     private Double price;
     private Integer originalStock;
 
-    @OneToOne(mappedBy = "remoteController")
-    Television television;
+    @OneToOne(mappedBy = "car")
+    DriverProfile driverProfile;
 
 //    De constructors hoeven niet gemaakt te worden mag wel
-//    public RemoteController() {
+//    public Car() {
 //    }
 //
-//    public RemoteController( String compatibleWith, String batteryType, String name, String brand, Double price, Integer originalStock) {
+//    public Car( String compatibleWith, String batteryType, String name, String brand, Double price, Integer originalStock) {
 //        this.compatibleWith = compatibleWith;
 //        this.batteryType = batteryType;
 //        this.name = name;
@@ -53,10 +53,6 @@ public class RemoteController {
 
     public String getBatteryType() {
         return batteryType;
-    }
-
-    public Television getTelevision() {
-        return television;
     }
 
     public void setBatteryType(String batteryType) {
@@ -95,7 +91,11 @@ public class RemoteController {
         this.originalStock = originalStock;
     }
 
-    public void setTelevision(Television television) {
-        this.television = television;
+    public DriverProfile getDriverProfile() {
+        return driverProfile;
+    }
+
+    public void setDriverProfile(DriverProfile driverProfile) {
+        this.driverProfile = driverProfile;
     }
 }

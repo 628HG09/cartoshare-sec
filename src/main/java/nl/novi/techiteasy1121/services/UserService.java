@@ -96,6 +96,9 @@ public class UserService {
         dto.password = user.getPassword();
         dto.enabled = user.isEnabled();
         dto.apikey = user.getApikey();
+        dto.firstname = user.getFirstname();
+        dto.lastname = user.getLastname();
+        dto.phoneNumber = user.getPhoneNumber();
         dto.email = user.getEmail();
         dto.authorities = user.getAuthorities();
 
@@ -110,6 +113,9 @@ public class UserService {
         user.setPassword(userDto.getPassword());
         user.setEnabled(userDto.getEnabled());
         user.setApikey(userDto.getApikey());
+        user.setFirstname(userDto.getFirstname());
+        user.setLastname(userDto.getLastname());
+        user.setPhoneNumber(userDto.getPhoneNumber());
         user.setEmail(userDto.getEmail());
 
         return user;
