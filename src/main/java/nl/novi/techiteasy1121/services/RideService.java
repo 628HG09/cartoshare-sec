@@ -51,6 +51,13 @@ public class RideService {
 
         ride.setDestination(dto.getDestination());
         ride.setPickUpLocation(dto.getPickUpLocation());
+        ride.setRoute(dto.getRoute());
+        ride.setAddRideInfo(dto.getAddRideInfo());
+        ride.setDepartureTime(dto.getDepartureTime());
+        ride.setPricePerPerson(dto.getPricePerPerson());
+        ride.setTotalRitPrice(dto.getTotalRitPrice());
+        ride.setAvailableSpots(dto.getAvailableSpots());
+        ride.setAutomaticAcceptance(dto.isAutomaticAcceptance());
 
 
         return ride;
@@ -62,7 +69,13 @@ public class RideService {
         dto.setId(ride.getId());
         dto.setDestination(ride.getDestination());
         dto.setPickUpLocation(ride.getPickUpLocation());
-
+        dto.setRoute(ride.getRoute());
+        dto.setAddRideInfo(ride.getAddRideInfo());
+        dto.setDepartureTime(ride.getDepartureTime());
+        dto.setPricePerPerson(ride.getPricePerPerson());
+        dto.setTotalRitPrice(ride.getTotalRitPrice());
+        dto.setAvailableSpots(ride.getAvailableSpots());
+        dto.setAutomaticAcceptance(ride.isAutomaticAcceptance());
         if(ride.getDriverProfile() != null){
             //bestuurderService begon met een B
             dto.setDriverProfileDto(DriverProfileService.transferToDto(ride.getDriverProfile()));
