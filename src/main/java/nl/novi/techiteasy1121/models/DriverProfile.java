@@ -15,9 +15,13 @@ public class DriverProfile {
     private String type;
     private Double price;
 
-    @OneToMany(mappedBy = "driverProfile")
-    @JsonIgnore
-    List<User> users;
+//    @OneToMany(mappedBy = "driverProfile")
+//    @JsonIgnore
+//    List<User> users;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne
     Car car;
@@ -60,5 +64,13 @@ public class DriverProfile {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -16,9 +16,7 @@ public class UserDto {
     public int phoneNumber;
     public String email;
 
-
-
-    private DriverProfileDto driverProfileDto;
+//    private DriverProfileDto driverProfileDto;
 
     @JsonSerialize
     public Set<Authority> authorities;
@@ -95,11 +93,11 @@ public class UserDto {
         this.authorities = authorities;
     }
 
-    public DriverProfileDto getDriverProfileDto() {
-        return driverProfileDto;
-    }
-
-    public void setDriverProfileDto(DriverProfileDto driverProfileDto) {
-        this.driverProfileDto = driverProfileDto;
-    }
+//    public DriverProfileDto getDriverProfileDto() {
+//        return driverProfileDto;
+//    }
+//
+//    public void setDriverProfileDto(DriverProfileDto driverProfileDto) {
+//        this.driverProfileDto = driverProfileDto;
+//    }
 }

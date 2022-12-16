@@ -1,7 +1,10 @@
 package nl.novi.techiteasy1121.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,9 +42,13 @@ public class User {
             fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "driver_profile_id")
-    private DriverProfile driverProfile;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "driver_profile_id")
+//    private DriverProfile driverProfile;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    List<DriverProfile> driverProfiles;
 
 
 
@@ -61,14 +68,6 @@ public class User {
     public void setApikey(String apikey) { this.apikey = apikey; }
     public String getFirstname() {
         return firstname;
-    }
-
-    public DriverProfile getDriverProfile() {
-        return driverProfile;
-    }
-
-    public void setDriverProfile(DriverProfile driverProfile) {
-        this.driverProfile = driverProfile;
     }
 
     public void setFirstname(String firstname) {

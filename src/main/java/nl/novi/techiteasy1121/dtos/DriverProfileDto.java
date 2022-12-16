@@ -10,6 +10,8 @@ public class DriverProfileDto {
 
     private CarDto carDto;
 
+    private UserDto userDto;
+
     public DriverProfileDto() {
     }
 
@@ -59,5 +61,13 @@ public class DriverProfileDto {
 
     public void setCarDto(CarDto carDto) {
         this.carDto = carDto;
+    }
+
+    public UserDto getUserDto() {
+        return userDto;
+    }
+
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 }
