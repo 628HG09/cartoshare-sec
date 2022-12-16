@@ -11,13 +11,9 @@ public class Car {
     @Id
     @GeneratedValue
     private Long id;
-
-    private String compatibleWith;
-    private String batteryType;
-    private String name;
+    private String licensePlate;
+    private String model;
     private String brand;
-    private Double price;
-    private Integer originalStock;
 
     @OneToOne(mappedBy = "car")
     DriverProfile driverProfile;
@@ -43,28 +39,21 @@ public class Car {
         this.id = id;
     }
 
-    public String getCompatibleWith() {
-        return compatibleWith;
+
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setCompatibleWith(String compatibleWith) {
-        this.compatibleWith = compatibleWith;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public String getBatteryType() {
-        return batteryType;
+    public String getModel() {
+        return model;
     }
 
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String name) {
+        this.model = name;
     }
 
     public String getBrand() {
@@ -75,21 +64,6 @@ public class Car {
         this.brand = brand;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getOriginalStock() {
-        return originalStock;
-    }
-
-    public void setOriginalStock(Integer originalStock) {
-        this.originalStock = originalStock;
-    }
 
     public DriverProfile getDriverProfile() {
         return driverProfile;

@@ -1,9 +1,6 @@
 package nl.novi.techiteasy1121.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class DriverProfile {
@@ -11,9 +8,7 @@ public class DriverProfile {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
-    private String type;
-    private Double price;
+    private String open;
 
 //    @OneToMany(mappedBy = "driverProfile")
 //    @JsonIgnore
@@ -34,28 +29,12 @@ public class DriverProfile {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getOpen() {
+        return open;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setOpen(String open) {
+        this.open = open;
     }
 
     public Car getCar() {

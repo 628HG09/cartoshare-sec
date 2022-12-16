@@ -3,6 +3,7 @@ package nl.novi.techiteasy1121.dtos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import nl.novi.techiteasy1121.models.Authority;
 
+import javax.persistence.Column;
 import java.util.Set;
 
 public class UserDto {
@@ -15,6 +16,7 @@ public class UserDto {
     public String lastname;
     public int phoneNumber;
     public String email;
+    public String bio;
 
 //    private DriverProfileDto driverProfileDto;
 
@@ -87,6 +89,14 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public void setAuthorities(Set<Authority> authorities) {

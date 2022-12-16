@@ -34,6 +34,11 @@ public class User {
     @Column
     private String email;
 
+    @Column
+    private String bio;
+
+
+
     @OneToMany(
             targetEntity = Authority.class,
             mappedBy = "username",
@@ -91,6 +96,14 @@ public class User {
     }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email;}
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
     public Set<Authority> getAuthorities() { return authorities; }
     public void addAuthority(Authority authority) {

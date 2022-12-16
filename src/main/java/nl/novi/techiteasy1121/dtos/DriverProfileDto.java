@@ -4,9 +4,7 @@ package nl.novi.techiteasy1121.dtos;
 public class DriverProfileDto {
 
     public Long id;
-    public String name;
-    public String type;
-    public Double price;
+    public String open;
 
     private CarDto carDto;
 
@@ -16,11 +14,10 @@ public class DriverProfileDto {
     }
 
     // MOET HIER NOG CAR BIJ?:
-    public DriverProfileDto(Long id, String name, String type, Double price) {
+    public DriverProfileDto(Long id, String open) {
         this.id = id;
-        this.name = name;
-        this.type = type;
-        this.price = price;
+        this.open = open;
+
     }
 
     public Long getId() {
@@ -31,28 +28,12 @@ public class DriverProfileDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getOpen() {
+        return open;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setOpen(String open) {
+        this.open = open;
     }
 
     public CarDto getCarDto() {

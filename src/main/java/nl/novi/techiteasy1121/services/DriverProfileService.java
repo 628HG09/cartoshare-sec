@@ -51,9 +51,7 @@ public class DriverProfileService {
         }
         DriverProfile storedDriverProfile = driverProfileRepository.findById(id).orElse(null);
         storedDriverProfile.setId(driverProfileDto.getId());
-        storedDriverProfile.setType(driverProfileDto.getType());
-        storedDriverProfile.setName(driverProfileDto.getName());
-        storedDriverProfile.setPrice(driverProfileDto.getPrice());
+        storedDriverProfile.setOpen(driverProfileDto.getOpen());
         driverProfileRepository.save(storedDriverProfile);
     }
 
@@ -61,9 +59,7 @@ public class DriverProfileService {
         DriverProfile driverProfile = new DriverProfile();
 
         driverProfile.setId(dto.getId());
-        driverProfile.setName(dto.getName());
-        driverProfile.setType(dto.getType());
-        driverProfile.setPrice(dto.getPrice());
+        driverProfile.setOpen(dto.getOpen());
 
         return driverProfile;
     }
@@ -72,9 +68,7 @@ public class DriverProfileService {
         var dto = new DriverProfileDto();
 
         dto.id = driverProfile.getId();
-        dto.name = driverProfile.getName();
-        dto.type = driverProfile.getType();
-        dto.price = driverProfile.getPrice();
+        dto.open = driverProfile.getOpen();
 
         return dto;
     }

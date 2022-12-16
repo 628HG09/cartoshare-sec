@@ -51,12 +51,9 @@ public class CarService {
         }
         Car storedCar = carRepository.findById(id).orElse(null);
         storedCar.setId(carDto.getId());
-        storedCar.setCompatibleWith(carDto.getCompatibleWith());
-        storedCar.setBatteryType(carDto.getBatteryType());
-        storedCar.setName(carDto.getName());
-        storedCar.setPrice(carDto.getPrice());
+        storedCar.setLicensePlate(carDto.getLicensePlate());
+        storedCar.setModel(carDto.getModel());
         storedCar.setBrand(carDto.getBrand());
-        storedCar.setOriginalStock(carDto.getOriginalStock());
         carRepository.save(storedCar);
     }
 
@@ -64,12 +61,9 @@ public class CarService {
         var dto = new CarDto();
 
         dto.id = car.getId();
-        dto.compatibleWith = car.getCompatibleWith();
-        dto.batteryType = car.getBatteryType();
-        dto.name = car.getName();
+        dto.licensePlate = car.getLicensePlate();
+        dto.model = car.getModel();
         dto.brand = car.getBrand();
-        dto.price = car.getPrice();
-        dto.originalStock = car.getOriginalStock();
 
         return dto;
     }
@@ -78,12 +72,9 @@ public class CarService {
         var remoteController = new Car();
 
         remoteController.setId(dto.getId());
-        remoteController.setCompatibleWith(dto.getCompatibleWith());
-        remoteController.setBatteryType(dto.getBatteryType());
-        remoteController.setName(dto.getName());
+        remoteController.setLicensePlate(dto.getLicensePlate());
+        remoteController.setModel(dto.getModel());
         remoteController.setBrand(dto.getBrand());
-        remoteController.setPrice(dto.getPrice());
-        remoteController.setOriginalStock(dto.getOriginalStock());
 
         return remoteController;
     }

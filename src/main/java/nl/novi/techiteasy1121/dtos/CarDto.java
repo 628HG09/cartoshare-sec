@@ -4,24 +4,19 @@ package nl.novi.techiteasy1121.dtos;
 public class CarDto {
 
     public Long id;
-    public String compatibleWith;
-    public String batteryType;
-    public String name;
+    public String licensePlate;
+    public String model;
     public String brand;
-    public Double price;
-    public Integer originalStock;
+
 
     public CarDto() {
     }
 
-    public CarDto(Long id, String compatibleWith, String batteryType, String name, String brand, Double price, Integer originalStock) {
+    public CarDto(Long id, String licensePlate, String model, String brand) {
         this.id = id;
-        this.compatibleWith = compatibleWith;
-        this.batteryType = batteryType;
-        this.name = name;
+        this.licensePlate = licensePlate;
+        this.model = model;
         this.brand = brand;
-        this.price = price;
-        this.originalStock = originalStock;
     }
 
     public Long getId() {
@@ -32,28 +27,20 @@ public class CarDto {
         this.id = id;
     }
 
-    public String getCompatibleWith() {
-        return compatibleWith;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setCompatibleWith(String compatibleWith) {
-        this.compatibleWith = compatibleWith;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public String getBatteryType() {
-        return batteryType;
+    public String getModel() {
+        return model;
     }
 
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getBrand() {
@@ -62,21 +49,5 @@ public class CarDto {
 
     public void setBrand(String brand) {
         this.brand = brand;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getOriginalStock() {
-        return originalStock;
-    }
-
-    public void setOriginalStock(Integer originalStock) {
-        this.originalStock = originalStock;
     }
 }

@@ -100,6 +100,7 @@ public class UserService {
         dto.lastname = user.getLastname();
         dto.phoneNumber = user.getPhoneNumber();
         dto.email = user.getEmail();
+        dto.bio = user.getBio();
         dto.authorities = user.getAuthorities();
 
         return dto;
@@ -117,6 +118,7 @@ public class UserService {
         user.setLastname(userDto.getLastname());
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setEmail(userDto.getEmail());
+        user.setBio(userDto.getBio());
 
         return user;
     }
