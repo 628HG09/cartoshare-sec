@@ -17,7 +17,7 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
-    public List<CarDto> getAllRemoteControllers() {
+    public List<CarDto> getAllCars() {
         List<CarDto> dtos = new ArrayList<>();
         List<Car> cars = carRepository.findAll();
         for (Car rc : cars) {
@@ -26,28 +26,28 @@ public class CarService {
         return dtos;
     }
 
-    public CarDto getRemoteController(long id) {
-        Optional<Car> remoteController = carRepository.findById(id);
-        if(remoteController.isPresent()) {
-            return transferToDto(remoteController.get());
+    public CarDto getCar(long id) {
+        Optional<Car> car = carRepository.findById(id);
+        if(car.isPresent()) {
+            return transferToDto(car.get());
         } else {
-            throw new RecordNotFoundException("No remotecontroller found");
+            throw new RecordNotFoundException("No car found");
         }
     }
 
-    public CarDto addRemoteController(CarDto carDto) {
-        Car rc =  transferToRemoteController(carDto);
+    public CarDto addCar(CarDto carDto) {
+        Car rc =  transferToCar(carDto);
         carRepository.save(rc);
         return carDto;
     }
 
-    public void deleteRemoteController(Long id) {
+    public void deleteCar(Long id) {
         carRepository.deleteById(id);
     }
 
-    public void updateRemoteController(Long id, CarDto carDto) {
+    public void updateCar(Long id, CarDto carDto) {
         if(!carRepository.existsById(id)) {
-            throw new RecordNotFoundException("No remotecontroller found");
+            throw new RecordNotFoundException("No car found");
         }
         Car storedCar = carRepository.findById(id).orElse(null);
         storedCar.setId(carDto.getId());
@@ -68,15 +68,15 @@ public class CarService {
         return dto;
     }
 
-    public Car transferToRemoteController(CarDto dto){
-        var remoteController = new Car();
+    public Car transferToCar(CarDto dto){
+        var car = new Car();
 
-        remoteController.setId(dto.getId());
-        remoteController.setLicensePlate(dto.getLicensePlate());
-        remoteController.setModel(dto.getModel());
-        remoteController.setBrand(dto.getBrand());
+        car.setId(dto.getId());
+        car.setLicensePlate(dto.getLicensePlate());
+        car.setModel(dto.getModel());
+        car.setBrand(dto.getBrand());
 
-        return remoteController;
+        return car;
     }
 
 }

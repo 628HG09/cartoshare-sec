@@ -17,7 +17,7 @@ public class DriverProfileService {
     @Autowired
     private DriverProfileRepository driverProfileRepository;
 
-    public List<DriverProfileDto> getAllCIModules() {
+    public List<DriverProfileDto> getAllDriverProfiles() {
         List<DriverProfile> driverProfiles = driverProfileRepository.findAll();
         List<DriverProfileDto> dtos = new ArrayList<>();
         for (DriverProfile ci : driverProfiles) {
@@ -26,28 +26,28 @@ public class DriverProfileService {
         return dtos;
     }
 
-    public DriverProfileDto getCIModule(long id) {
-        Optional<DriverProfile> ciModule = driverProfileRepository.findById(id);
-        if(ciModule.isPresent()) {
-            DriverProfileDto ci = transferToDto(ciModule.get());
+    public DriverProfileDto getDriverProfile(long id) {
+        Optional<DriverProfile> driverProfile = driverProfileRepository.findById(id);
+        if(driverProfile.isPresent()) {
+            DriverProfileDto ci = transferToDto(driverProfile.get());
             return ci;
         } else {
-            throw new RecordNotFoundException("No ci-module found");
+            throw new RecordNotFoundException("No driver-profile found");
         }
     }
 
-    public DriverProfileDto addCIModule(DriverProfileDto driverProfileDto) {
-        driverProfileRepository.save(transferToCIModule(driverProfileDto));
+    public DriverProfileDto addDriverprofile(DriverProfileDto driverProfileDto) {
+        driverProfileRepository.save(transferToDriverProfile(driverProfileDto));
         return driverProfileDto;
     }
 
-    public void deleteCIModule(Long id) {
+    public void deleteDriverProfile(Long id) {
         driverProfileRepository.deleteById(id);
     }
 
-    public void updateCIModule(Long id, DriverProfileDto driverProfileDto) {
+    public void updateDriverProfile(Long id, DriverProfileDto driverProfileDto) {
         if(!driverProfileRepository.existsById(id)) {
-            throw new RecordNotFoundException("No ci-module found");
+            throw new RecordNotFoundException("No driver-profile found");
         }
         DriverProfile storedDriverProfile = driverProfileRepository.findById(id).orElse(null);
         storedDriverProfile.setId(driverProfileDto.getId());
@@ -55,7 +55,7 @@ public class DriverProfileService {
         driverProfileRepository.save(storedDriverProfile);
     }
 
-    public DriverProfile transferToCIModule(DriverProfileDto dto){
+    public DriverProfile transferToDriverProfile(DriverProfileDto dto){
         DriverProfile driverProfile = new DriverProfile();
 
         driverProfile.setId(dto.getId());

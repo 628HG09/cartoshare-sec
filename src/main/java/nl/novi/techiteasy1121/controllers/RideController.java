@@ -17,8 +17,9 @@ public class RideController {
     }
 
 
-    @PostMapping("")
-    public ResponseEntity<Object> addRit(@RequestBody RideDto rideDto){
+    @PostMapping("/users")
+    //user erbij gezet!
+    public ResponseEntity<Object> addRide(@RequestBody RideDto rideDto){
         RideDto dto = rideService.addRide(rideDto);
 //        Rit savedRit =  rideService.save(ritDto);
 
@@ -26,7 +27,7 @@ public class RideController {
     }
 
     @PutMapping("/{id}/{bestuurderId}")
-    public void assignBestuurderToRit(@PathVariable("id") Long id, @PathVariable("bestuurderId") Long bestuurderId) {
+    public void assignBestuurderToRide(@PathVariable("id") Long id, @PathVariable("bestuurderId") Long bestuurderId) {
         rideService.assignDriverProfileToRide(id, bestuurderId);
     }
 }

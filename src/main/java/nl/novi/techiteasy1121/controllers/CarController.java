@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/cars")
 public class CarController {
     private final CarService carService;
 
@@ -17,37 +18,40 @@ public class CarController {
     }
 
 
-    @GetMapping("/remotecontrollers")
-    public List<CarDto> getAllRemotecontrollers() {
+    @GetMapping("/users")
+    //users erbijgezet!
+    public List<CarDto> getAllCars() {
 
-        List<CarDto> dtos = carService.getAllRemoteControllers();
+        List<CarDto> dtos = carService.getAllCars();
 
         return dtos;
     }
 
-    @GetMapping("/remotecontrollers/{id}")
-    public CarDto getRemotecontroller(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public CarDto getCar(@PathVariable("id") Long id) {
 
-        CarDto dto = carService.getRemoteController(id);
+        CarDto dto = carService.getCar(id);
 
         return dto;
     }
 
-    @PostMapping("/remotecontrollers")
-    public CarDto addRemoteController(@RequestBody CarDto dto) {
-        CarDto dto1 = carService.addRemoteController(dto);
+    @PostMapping("/users")
+    // user erbij gezet!
+    public CarDto addCar(@RequestBody CarDto dto) {
+        CarDto dto1 = carService.addCar(dto);
         return dto1;
     }
 
-    @DeleteMapping("/remotecontrollers/{id}")
-    public void deleteRemoteController(@PathVariable("id") Long id) {
-        carService.deleteRemoteController(id);
+    @DeleteMapping("/{id}")
+    public void deleteCar(@PathVariable("id") Long id) {
+        carService.deleteCar(id);
     }
 
-    @PutMapping("/remotecontrollers/{id}")
+    @PutMapping("/{id}")
     public CarDto updateTelevision(@PathVariable("id") Long id, @RequestBody CarDto dto) {
-       carService.updateRemoteController(id, dto);
+       carService.updateCar(id, dto);
         return dto;
     }
+    // car was "remoteController"
 
 }

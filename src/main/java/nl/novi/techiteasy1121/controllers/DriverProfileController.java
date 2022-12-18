@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/driverprofiles")
 public class DriverProfileController {
     private final DriverProfileService driverProfileService;
 
@@ -18,37 +19,40 @@ public class DriverProfileController {
     }
 
 
-    @GetMapping("/cimodules")
-    public List<DriverProfileDto> getAllCIModules() {
+    @GetMapping("")
+    public List<DriverProfileDto> getAllDriverProfiles() {
 
-        var dtos = driverProfileService.getAllCIModules();
+        var dtos = driverProfileService.getAllDriverProfiles();
 
         return dtos;
     }
 
-    @GetMapping("/cimodules/{id}")
-    public DriverProfileDto getCIModule(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public DriverProfileDto getDriverProfile(@PathVariable("id") Long id) {
 
-        DriverProfileDto driverProfileDto = driverProfileService.getCIModule(id);
+        DriverProfileDto driverProfileDto = driverProfileService.getDriverProfile(id);
 
         return driverProfileDto;
     }
 
-    @PostMapping("/cimodules")
-    public DriverProfileDto addCIModule(@RequestBody DriverProfileDto dto) {
-        DriverProfileDto driverProfileDto = driverProfileService.addCIModule(dto);
+    @PostMapping("/users")
+    // /users erbij gezet!
+    public DriverProfileDto addDriverProfile(@RequestBody DriverProfileDto dto) {
+        DriverProfileDto driverProfileDto = driverProfileService.addDriverprofile(dto);
         return driverProfileDto;
     }
 
-    @DeleteMapping("/cimodules/{id}")
-    public void deleteCIModule(@PathVariable("id") Long id) {
-        driverProfileService.deleteCIModule(id);
+    @DeleteMapping("/{id}")
+    public void deleteDriverProfile(@PathVariable("id") Long id) {
+        driverProfileService.deleteDriverProfile(id);
     }
 
-    @PutMapping("/cimodules/{id}")
-    public DriverProfileDto updateCIModule(@PathVariable("id") Long id, @RequestBody DriverProfileDto driverProfileDto) {
-        driverProfileService.updateCIModule(id, driverProfileDto);
+    @PutMapping("/{id}")
+    public DriverProfileDto updateDriverProfile(@PathVariable("id") Long id, @RequestBody DriverProfileDto driverProfileDto) {
+        driverProfileService.updateDriverProfile(id, driverProfileDto);
         return driverProfileDto;
     }
+
+    // driverprofiles was cimodules
 
 }

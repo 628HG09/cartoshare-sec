@@ -19,7 +19,7 @@ public class PassengerProfileService {
     @Autowired
     private PassengerProfileRepository passengerProfileRepository;
 
-    public List<PassengerProfileDto> getAllCIModules() {
+    public List<PassengerProfileDto> getAllPassengerprofiles() {
         List<PassengerProfile> passengerProfiles = passengerProfileRepository.findAll();
         List<PassengerProfileDto> dtos = new ArrayList<>();
         for (PassengerProfile ci : passengerProfiles) {
@@ -28,28 +28,28 @@ public class PassengerProfileService {
         return dtos;
     }
 
-    public PassengerProfileDto getCIModule(long id) {
-        Optional<PassengerProfile> ciModule = passengerProfileRepository.findById(id);
-        if(ciModule.isPresent()) {
-            PassengerProfileDto ci = transferToDto(ciModule.get());
+    public PassengerProfileDto getPassengerProfile(long id) {
+        Optional<PassengerProfile> passengerProfile = passengerProfileRepository.findById(id);
+        if(passengerProfile.isPresent()) {
+            PassengerProfileDto ci = transferToDto(passengerProfile.get());
             return ci;
         } else {
-            throw new RecordNotFoundException("No ci-module found");
+            throw new RecordNotFoundException("No passenger-profile found");
         }
     }
 
-    public PassengerProfileDto addCIModule(PassengerProfileDto passengerProfileDto) {
-        passengerProfileRepository.save(transferToCIModule(passengerProfileDto));
+    public PassengerProfileDto addPassengerProfile(PassengerProfileDto passengerProfileDto) {
+        passengerProfileRepository.save(transferToPassengerProfile(passengerProfileDto));
         return passengerProfileDto;
     }
 
-    public void deleteCIModule(Long id) {
+    public void deletePassengerProfile(Long id) {
         passengerProfileRepository.deleteById(id);
     }
 
-    public void updateCIModule(Long id, PassengerProfileDto passengerProfileDto) {
+    public void updatePassengerProfile(Long id, PassengerProfileDto passengerProfileDto) {
         if(!passengerProfileRepository.existsById(id)) {
-            throw new RecordNotFoundException("No ci-module found");
+            throw new RecordNotFoundException("No passenger-profile found");
         }
         PassengerProfile storedPassengerProfile = passengerProfileRepository.findById(id).orElse(null);
         storedPassengerProfile.setId(passengerProfileDto.getId());
@@ -57,7 +57,7 @@ public class PassengerProfileService {
         passengerProfileRepository.save(storedPassengerProfile);
     }
 
-    public PassengerProfile transferToCIModule(PassengerProfileDto dto){
+    public PassengerProfile transferToPassengerProfile(PassengerProfileDto dto){
         PassengerProfile passengerProfile = new PassengerProfile();
 
         passengerProfile.setId(dto.getId());
